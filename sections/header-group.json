@@ -1,54 +1,196 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      },
       "blocks": {
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "scheme-1",
-            "link": ""
+            "text": "Get early access on launches and offers.",
+            "link_text": "Sign Up For Newsletter",
+            "link": "#ContactFooter"
           }
         }
       },
       "block_order": [
         "announcement-bar-0"
-      ]
+      ],
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-4",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true
+      }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "mega_menu_promos_RUF83j": {
+          "type": "mega_menu_promos",
+          "settings": {
+            "menu_item_title": "Men",
+            "image_1": "shopify://shop_images/man-in-suit-on-stairs.jpg",
+            "title_1": "Holiday Gifting",
+            "url_1": "shopify://collections/holiday-gifting",
+            "image_2": "shopify://shop_images/green-blazer-shoes-step-in-style.jpg",
+            "title_2": "Giftable Sweaters",
+            "url_2": "shopify://collections/giftable-sweaters"
+          }
+        },
+        "mega_menu_promos_6wVJBX": {
+          "type": "mega_menu_promos",
+          "settings": {
+            "menu_item_title": "Women",
+            "image_1": "shopify://shop_images/model-laughs-barefoot.jpg",
+            "title_1": "GIftable Sweaters",
+            "url_1": "shopify://collections/giftable-sweaters",
+            "image_2": "shopify://shop_images/model-in-neutral-colors-by-window.jpg",
+            "title_2": "New Tops",
+            "url_2": "shopify://collections/new-tops"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_promos_RUF83j",
+        "mega_menu_promos_6wVJBX"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "menu_color_scheme": "scheme-1",
-        "logo_position": "middle-left",
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "mobile_logo_position": "center",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "search_popular_categories_heading": "Popular Categories",
+        "search_popular_category_collection_1": [
+          "activewear"
+        ],
+        "search_popular_category_title_1": "Activewear",
+        "search_popular_category_image_1": "shopify://shop_images/model-with-leather-jacket-over-shoulders.jpg",
+        "search_popular_category_collection_2": [
+          "dresses-skirts"
+        ],
+        "search_popular_category_title_2": "Dresses & Skirts",
+        "search_popular_category_image_2": "shopify://shop_images/model-with-leather-jacket-over-shoulders.jpg",
+        "search_popular_category_collection_3": [
+          "giftable-sweaters"
+        ],
+        "search_popular_category_title_3": "Giftable Sweaters",
+        "search_popular_category_image_3": "shopify://shop_images/model-with-leather-jacket-over-shoulders.jpg",
+        "search_popular_category_collection_4": [
+          "sandals"
+        ],
+        "search_popular_category_title_4": "Sandals",
+        "search_popular_category_image_4": "shopify://shop_images/model-with-leather-jacket-over-shoulders.jpg",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "margin_bottom": 0,
         "padding_top": 20,
         "padding_bottom": 20
+      }
+    },
+    "secondary-header": {
+      "type": "secondary-header",
+      "blocks": {
+        "collection_link_tLiJw7": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "activewear",
+            "link_color": ""
+          }
+        },
+        "collection_link_PBPUtQ": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "new-tops",
+            "link_color": ""
+          }
+        },
+        "collection_link_arAKRc": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "new-arrivals",
+            "link_color": ""
+          }
+        },
+        "collection_link_Vf8EAn": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "gift-guide",
+            "link_color": ""
+          }
+        },
+        "collection_link_yHfptT": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "holiday-gifting",
+            "link_color": ""
+          }
+        },
+        "collection_link_THYAJq": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "clothing",
+            "link_color": ""
+          }
+        },
+        "collection_link_tCcVzT": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "best-sellers",
+            "link_color": ""
+          }
+        },
+        "collection_link_6PyBWk": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "accessories",
+            "link_color": ""
+          }
+        },
+        "collection_link_BxGbMk": {
+          "type": "collection_link",
+          "settings": {
+            "collection": "sale",
+            "link_color": "#ff0000"
+          }
+        }
+      },
+      "block_order": [
+        "collection_link_tLiJw7",
+        "collection_link_PBPUtQ",
+        "collection_link_arAKRc",
+        "collection_link_Vf8EAn",
+        "collection_link_yHfptT",
+        "collection_link_THYAJq",
+        "collection_link_tCcVzT",
+        "collection_link_6PyBWk",
+        "collection_link_BxGbMk"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1"
       }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "secondary-header"
   ]
 }

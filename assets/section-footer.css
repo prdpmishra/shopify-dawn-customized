@@ -8,7 +8,9 @@
 
 .footer__content-top {
   padding-bottom: 5rem;
-  display: block;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 749px) {
@@ -27,6 +29,7 @@
   }
 
   .footer__content-top {
+    display: block;
     padding-bottom: 3rem;
     padding-left: calc(4rem / var(--font-body-scale));
     padding-right: calc(4rem / var(--font-body-scale));
@@ -52,6 +55,7 @@
 .footer__content-bottom-wrapper {
   display: flex;
   width: 100%;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 749px) {
@@ -128,7 +132,6 @@
 .footer-block--newsletter {
   display: flex;
   align-items: flex-end;
-  margin-top: 3rem;
   gap: 1rem;
 }
 
@@ -462,7 +465,7 @@
 }
 
 .policies li::before {
-  content: '\00B7';
+  content: '';
   padding: 0 0.8rem;
 }
 

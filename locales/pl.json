@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -111,6 +120,7 @@
       "add_to_cart": "Dodaj do koszyka",
       "description": "Opis",
       "on_sale": "W promocji",
+      "discount_percentage": "{{ percentage }}% zniżki",
       "share": "Udostępnij ten produkt",
       "sold_out": "Wyprzedane",
       "unavailable": "Niedostępny",

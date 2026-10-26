@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -109,6 +118,7 @@
       "add_to_cart": "Tambahkan ke keranjang",
       "description": "Deskripsi",
       "on_sale": "Obral",
+      "discount_percentage": "Diskon {{ percentage }}%",
       "product_variants": "Varian produk",
       "quantity": {
         "label": "Jumlah",

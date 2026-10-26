@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -109,6 +118,7 @@
       "add_to_cart": "添加到购物车",
       "description": "描述",
       "on_sale": "促销",
+      "discount_percentage": "优惠 {{ percentage }}%",
       "product_variants": "产品多属性",
       "quantity": {
         "label": "数量",

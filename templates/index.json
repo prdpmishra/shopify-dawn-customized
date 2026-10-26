@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -6,16 +15,23 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "Your Cozy Era",
             "heading_size": "h0"
+          }
+        },
+        "text_zQxUBw": {
+          "type": "text",
+          "settings": {
+            "text": "Get peak comfy-chic with new winter essentials.",
+            "text_style": "subtitle"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "SHOP NOW",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -24,52 +40,299 @@
       },
       "block_order": [
         "heading",
+        "text_zQxUBw",
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/panajiotis-woman-2150881_3c10586f-6fbf-4bab-a8ba-b6550053e314.jpg",
         "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
+        "image_height": "adapt",
         "image_behavior": "none",
+        "desktop_content_position": "middle-left",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "collection_list_7RdPgR": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_fC7n3y": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sandals"
+          }
+        },
+        "featured_collection_C66fHM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "belts"
+          }
+        },
+        "featured_collection_LpKgm9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "activewear"
+          }
+        },
+        "featured_collection_xqVQf9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "boots"
+          }
+        },
+        "featured_collection_VFmc3M": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hats"
+          }
+        },
+        "featured_collection_8DJMXK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "handbags"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_fC7n3y",
+        "featured_collection_C66fHM",
+        "featured_collection_LpKgm9",
+        "featured_collection_xqVQf9",
+        "featured_collection_VFmc3M",
+        "featured_collection_8DJMXK"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Shop by Category",
+        "heading_size": "h2",
+        "image_ratio": "portrait",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_i74G7e": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_qNJkBh": {
+          "type": "heading",
+          "settings": {
+            "heading": "We're on a Mission To Clean Up the Industry",
+            "heading_size": "h1"
+          }
+        },
+        "text_gjwck3": {
+          "type": "text",
+          "settings": {
+            "text": "Read about our progress in our latest Impact Report.",
+            "text_style": "body"
+          }
+        },
+        "buttons_ggcaGm": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Learn More",
+            "button_link_1": "shopify://pages/about-us",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_qNJkBh",
+        "text_gjwck3",
+        "buttons_ggcaGm"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/bright-blue-sky-over-oregon-forest.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
+        "title": "Featured Products",
+        "heading_size": "h2",
+        "description": "<p>Beautifully Functional. Purposefully Designed. Consciously Crafted.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": false,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "custom_list_B9xVNK": {
+      "type": "custom-list",
+      "blocks": {
+        "tile_gkmaK8": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/man-adjusts-his-shirt-cuffs-below-watch.jpg",
+            "title": "New Arrivals",
+            "link_label": "SHOP THE LATEST",
+            "link": "shopify://collections/new-arrivals",
+            "button_style_secondary": true,
+            "position": "middle-center"
+          }
+        },
+        "tile_kheHb6": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/model-in-neutral-colors-by-window.jpg",
+            "title": "Best-Sellers",
+            "link_label": "SHOP YOUR FAVOURITS",
+            "link": "shopify://collections/best-sellers",
+            "button_style_secondary": true,
+            "position": "middle-center"
+          }
+        },
+        "tile_8RLKUt": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/person-in-a-pink-outfit-sits-in-a-gold-chair.jpg",
+            "title": "The Holiday Outfit",
+            "link_label": "SHOP OCCASION",
+            "link": "shopify://collections/holiday-gifting",
+            "button_style_secondary": true,
+            "position": "middle-center"
+          }
+        }
+      },
+      "block_order": [
+        "tile_gkmaK8",
+        "tile_kheHb6",
+        "tile_8RLKUt"
+      ],
+      "name": "t:sections.custom-list.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "overlay_opacity": 10,
+        "text_color": "#ffffff",
+        "color_scheme": "scheme-f24f1d64-8ce0-49f2-bd79-c705f1305230",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_blog_ziPQFT": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "news",
+        "post_limit": 2,
+        "heading": "",
+        "heading_size": "h1",
+        "columns_desktop": 2,
+        "show_view_all": false,
+        "show_image": true,
+        "show_date": false,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_TCNX7V": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_YUQ4W7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/light-font-icon-shipping-box.png",
+            "title": "Complimentary Shipping",
+            "text": "<p>Enjoy free shipping on U.S. orders over $100.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QPfMNx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/black-and-white-recycle-icon.png",
+            "title": "Consciously Crafted",
+            "text": "<p>Designed with you and the planet in mind.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_qWUEeA": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/light-location-picker-icon.png",
+            "title": "Come Say Hi",
+            "text": "<p>We have 11 stores across the U.S.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_YUQ4W7",
+        "column_QPfMNx",
+        "column_qWUEeA"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "collection_list_7RdPgR",
+    "image_banner_i74G7e",
+    "featured_collection",
+    "custom_list_B9xVNK",
+    "featured_blog_ziPQFT",
+    "multicolumn_TCNX7V"
   ]
 }

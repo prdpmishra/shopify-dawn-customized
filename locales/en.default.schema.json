@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "global": {
@@ -375,6 +384,30 @@
     }
   },
   "sections": {
+    "secondary_header": {
+      "name": "Collection navigation",
+      "settings": {
+        "color_scheme": {
+          "label": "Color scheme"
+        }
+      },
+      "blocks": {
+        "collection_link": {
+          "name": "Collection link",
+          "settings": {
+            "collection": {
+              "label": "Collection"
+            },
+            "link_color": {
+              "label": "Link color"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Collection navigation"
+      }
+    },
     "all": {
       "animation": {
         "content": "Animations",
@@ -460,11 +493,11 @@
           "label": "Change every"
         },
         "heading_utilities": {
-         "content": "Utilities"
+          "content": "Utilities"
         },
         "paragraph": {
           "content": "Appear only on large screens"
-        },                     
+        },
         "show_social": {
           "label": "Social media icons",
           "info": "[Manage social accounts](/editor?context=theme&category=social%20media)"
@@ -485,6 +518,9 @@
             "text": {
               "label": "Text",
               "default": "Welcome to our store"
+            },
+            "link_text": {
+              "label": "Link Text"
             },
             "text_alignment": {
               "label": "Text alignment",
@@ -528,7 +564,7 @@
         },
         "header_layout": {
           "content": "Layout"
-        },            
+        },
         "desktop_layout": {
           "label": "Layout",
           "options__1": {
@@ -619,9 +655,9 @@
           "default": "Collections",
           "label": "Heading"
         },
-         "header_layout": {
-        "content": "Layout"
-        },        
+        "header_layout": {
+          "content": "Layout"
+        },
         "image_ratio": {
           "label": "Image ratio",
           "options__1": {
@@ -703,17 +739,17 @@
           "label": "Heading"
         },
         "layout_header": {
-        "content": "Layout"
+          "content": "Layout"
         },
         "text_header": {
-        "content": "Text"
-        },        
+          "content": "Text"
+        },
         "blog": {
           "label": "Blog"
         },
         "post_limit": {
           "label": "Post count"
-        }, 
+        },
         "columns_desktop": {
           "label": "Columns"
         },
@@ -739,7 +775,7 @@
       "name": "Featured collection",
       "settings": {
         "header_text": {
-        "content": "Text"
+          "content": "Text"
         },
         "title": {
           "label": "Heading",
@@ -767,8 +803,8 @@
           "content": "Collection layout"
         },
         "header_mobile": {
-        "content": "Mobile layout"
-        },                 
+          "content": "Mobile layout"
+        },
         "collection": {
           "label": "Collection"
         },
@@ -844,6 +880,9 @@
       "presets": {
         "name": "Featured collection"
       }
+    },
+    "custom-carousel": {
+      "name": "Custom carousel"
     },
     "featured-product": {
       "name": "Featured product",
@@ -1075,6 +1114,35 @@
     },
     "header": {
       "name": "Header",
+      "blocks": {
+        "mega_menu_promos": {
+          "name": "Mega menu promos",
+          "settings": {
+            "menu_item_title": {
+              "label": "Top-level menu item",
+              "info": "Enter the exact top-level menu title that opens this mega menu."
+            },
+            "image_1": {
+              "label": "First banner image"
+            },
+            "title_1": {
+              "label": "First banner title"
+            },
+            "url_1": {
+              "label": "First banner link"
+            },
+            "image_2": {
+              "label": "Second banner image"
+            },
+            "title_2": {
+              "label": "Second banner title"
+            },
+            "url_2": {
+              "label": "Second banner link"
+            }
+          }
+        }
+      },
       "settings": {
         "logo_help": {
           "content": "Edit your logo in [theme settings](/editor?context=theme&category=logo)"
@@ -1117,6 +1185,55 @@
         },
         "menu_color_scheme": {
           "label": "Menu color scheme"
+        },
+        "search_popular_categories": {
+          "content": "Search popular categories"
+        },
+        "search_popular_categories_heading": {
+          "label": "Popular categories heading",
+          "default": "Popular Categories"
+        },
+        "search_popular_category_collection_1": {
+          "label": "Category 1 collection"
+        },
+        "search_popular_category_collection_2": {
+          "label": "Category 2 collection"
+        },
+        "search_popular_category_collection_3": {
+          "label": "Category 3 collection"
+        },
+        "search_popular_category_collection_4": {
+          "label": "Category 4 collection"
+        },
+        "search_popular_category_title": {
+          "info": "Optional. Defaults to the selected collection’s title."
+        },
+        "search_popular_category_title_1": {
+          "label": "Category 1 title"
+        },
+        "search_popular_category_title_2": {
+          "label": "Category 2 title"
+        },
+        "search_popular_category_title_3": {
+          "label": "Category 3 title"
+        },
+        "search_popular_category_title_4": {
+          "label": "Category 4 title"
+        },
+        "search_popular_category_image": {
+          "info": "Optional. Defaults to the selected collection’s featured image."
+        },
+        "search_popular_category_image_1": {
+          "label": "Category 1 image"
+        },
+        "search_popular_category_image_2": {
+          "label": "Category 2 image"
+        },
+        "search_popular_category_image_3": {
+          "label": "Category 3 image"
+        },
+        "search_popular_category_image_4": {
+          "label": "Category 4 image"
         },
         "sticky_header_type": {
           "label": "Sticky header",
@@ -1187,7 +1304,7 @@
           "options__4": {
             "label": "Large"
           }
-          },
+        },
         "content": {
           "content": "Content"
         },
@@ -1292,9 +1409,9 @@
         "buttons": {
           "name": "Buttons",
           "settings": {
-          "header_1":{
-          "content": "Button 1"
-          },
+            "header_1": {
+              "content": "Button 1"
+            },
             "button_label_1": {
               "label": "Label",
               "info": "Leave blank to hide",
@@ -1306,7 +1423,7 @@
             "button_style_secondary_1": {
               "label": "Outline style"
             },
-            "header_2":{
+            "header_2": {
               "content": "Button 2"
             },
             "button_label_2": {
@@ -1330,12 +1447,12 @@
     "image-with-text": {
       "name": "Image with text",
       "settings": {
-      "header": {
-      "content": "Content"
-      },
-      "header_colors": {
-      "content": "Colors" 
-      },
+        "header": {
+          "content": "Content"
+        },
+        "header_colors": {
+          "content": "Colors"
+        },
         "image": {
           "label": "Image"
         },
@@ -1506,15 +1623,15 @@
         "image": {
           "label": "Image"
         },
-        "header":{
-        "content": "Image"
+        "header": {
+          "content": "Image"
         },
-        "header_2":{
-        "content": "Content"
+        "header_2": {
+          "content": "Content"
         },
-        "header_3":{
-        "content": "Colors"
-        },        
+        "header_3": {
+          "content": "Colors"
+        },
         "image_height": {
           "options__1": {
             "label": "Adapt to image"
@@ -2287,7 +2404,7 @@
             },
             "pairing_2": {
               "label": "Pairing 2"
-            },            
+            },
             "icon_2": {
               "label": "Icon"
             },
@@ -2299,8 +2416,8 @@
               "default": "Heading"
             },
             "pairing_3": {
-            "label": "Pairing 3"
-            },             
+              "label": "Pairing 3"
+            },
             "icon_3": {
               "label": "Icon"
             },
@@ -2415,7 +2532,7 @@
           "options__2": {
             "label": "2"
           }
-        },        
+        },
         "image_ratio": {
           "label": "Image ratio",
           "options__1": {
@@ -2467,10 +2584,10 @@
         },
         "header_layout": {
           "content": "Layout"
-        },                            
+        },
         "header_button": {
           "content": "Button"
-        }, 
+        },
         "image_width": {
           "label": "Width",
           "options__1": {
@@ -2677,7 +2794,7 @@
         },
         "content_header": {
           "content": "Content"
-        },        
+        },
         "desktop_content_alignment": {
           "options__1": {
             "label": "Left"
@@ -2909,8 +3026,8 @@
           "name": "Buttons",
           "settings": {
             "header_button1": {
-            "content": "Button 1"
-            }, 
+              "content": "Button 1"
+            },
             "button_label_1": {
               "label": "Label",
               "info": "Leave blank to hide",
@@ -2924,7 +3041,7 @@
             },
             "header_button2": {
               "content": "Button 2"
-            },             
+            },
             "button_label_2": {
               "label": "Label",
               "info": "Leave label blank to hide"
@@ -3064,7 +3181,7 @@
               "default": "Tell your brand's story through images"
             },
             "header_button": {
-            "content": "Button"      
+              "content": "Button"
             },
             "button_label": {
               "label": "Label",
@@ -3078,7 +3195,7 @@
               "label": "Outline style"
             },
             "box_align": {
-              "label": "Content position",              
+              "label": "Content position",
               "options__1": {
                 "label": "Top left"
               },
@@ -3108,7 +3225,7 @@
               }
             },
             "header_layout": {
-            "content": "Layout"                 
+              "content": "Layout"
             },
             "show_text_box": {
               "label": "Container"
@@ -3129,11 +3246,11 @@
               "label": "Overlay opacity"
             },
             "header_text": {
-            "content": "Text"      
+              "content": "Text"
             },
             "header_colors": {
-            "content": "Colors"                 
-            },            
+              "content": "Colors"
+            },
             "text_alignment_mobile": {
               "label": "Mobile content alignment",
               "options__1": {
@@ -3194,8 +3311,8 @@
           "label": "Container color scheme"
         },
         "section_color_scheme": {
-        "label": "Section color scheme"
-        },        
+          "label": "Section color scheme"
+        },
         "open_first_collapsible_row": {
           "label": "Open first row"
         },
@@ -3382,6 +3499,55 @@
       "presets": {
         "name": "Collapsible content"
       }
+    },
+    "custom-list": {
+      "name": "Custom list",
+      "settings": {
+        "heading": { "label": "Section heading", "default": "Explore our collections" },
+        "heading_size": {
+          "label": "Heading size",
+          "options__1": { "label": "Small" },
+          "options__2": { "label": "Medium" },
+          "options__3": { "label": "Large" },
+          "options__4": { "label": "Extra large" }
+        },
+        "image_ratio": {
+          "label": "Tile image ratio",
+          "options__1": { "label": "Portrait" },
+          "options__2": { "label": "Square" },
+          "options__3": { "label": "Landscape" }
+        },
+        "overlay_opacity": { "label": "Image overlay" },
+        "text_color": { "label": "Text color" },
+        "color_scheme": { "label": "Color scheme" },
+        "padding_top": { "label": "Top padding" },
+        "padding_bottom": { "label": "Bottom padding" }
+      },
+      "blocks": {
+        "tile": {
+          "name": "Image tile",
+          "settings": {
+            "image": { "label": "Image" },
+            "title": { "label": "Title", "default": "Explore" },
+            "link_label": { "label": "Link label", "default": "Shop now" },
+            "link": { "label": "Link" },
+            "button_style_secondary": { "label": "Use outline button style" },
+            "position": {
+              "label": "Content position",
+              "options__1": { "label": "Top left" },
+              "options__2": { "label": "Top center" },
+              "options__3": { "label": "Top right" },
+              "options__4": { "label": "Middle left" },
+              "options__5": { "label": "Middle center" },
+              "options__6": { "label": "Middle right" },
+              "options__7": { "label": "Bottom left" },
+              "options__8": { "label": "Bottom center" },
+              "options__9": { "label": "Bottom right" }
+            }
+          }
+        }
+      },
+      "presets": { "name": "Custom list" }
     },
     "disclosures": {
       "name": "Disclosures",

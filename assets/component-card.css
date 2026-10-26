@@ -247,6 +247,10 @@
   .grid--2-col-tablet-down .card__content quick-add-bulk .quantity {
     width: auto;
   }
+
+  .card--standard > .card__content .card__information {
+    display: block !important;
+  }
 }
 
 .card-information quantity-popover volume-pricing {
@@ -303,6 +307,7 @@
 .card__heading {
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 1.6rem;
 }
 
 .card__heading:last-child {
@@ -361,12 +366,16 @@
 }
 
 .card__heading a:focus:after {
-  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  box-shadow:
+    0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
 }
 
 .card__heading a:focus-visible:after {
-  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  box-shadow:
+    0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
 }
 
@@ -426,6 +435,8 @@
 .card--standard > .card__content .card__information {
   padding-left: 0;
   padding-right: 0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 
 .card--card.card--media .card__inner .card__information,
@@ -495,7 +506,7 @@
 }
 
 .card-information > *:not(.visually-hidden:first-child) + *:not(.rating):not(.card__information-volume-pricing-note) {
-  margin-top: 0.7rem;
+  margin-top: 0;
 }
 
 .card-information .caption {

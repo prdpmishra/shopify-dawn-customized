@@ -1,0 +1,40 @@
+{% doc %}
+  Renders arrow and dot controls for an opted-in custom carousel.
+
+  @param {string} section_id - The section ID used to connect the arrows to the slider.
+
+  @example
+  {% render 'custom-carousel-controls', section_id: section.id %}
+{% enddoc %}
+
+<div class="slider-buttons">
+  <button
+    type="button"
+    class="slider-button slider-button--prev"
+    name="previous"
+    aria-label="{{ 'general.slider.previous_slide' | t }}"
+    aria-controls="Slider-{{ section_id }}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-caret.svg' | inline_asset_content -}}
+    </span>
+  </button>
+  <button
+    type="button"
+    class="slider-button slider-button--next"
+    name="next"
+    aria-label="{{ 'general.slider.next_slide' | t }}"
+    aria-controls="Slider-{{ section_id }}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-caret.svg' | inline_asset_content -}}
+    </span>
+  </button>
+</div>
+<div
+  class="slider-pagination"
+  data-slider-pagination
+  data-label="{{ 'general.slider.name' | t | escape }}"
+  role="group"
+  aria-label="{{ 'general.slider.name' | t | escape }}"
+></div>

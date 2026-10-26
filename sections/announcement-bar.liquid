@@ -32,22 +32,28 @@
         aria-label="{{ 'sections.header.announcement' | t }}"
         {{ section.blocks.first.shopify_attributes }}
       >
-        {%- if section.blocks.first.settings.text != blank -%}
-          {%- if section.blocks.first.settings.link != blank -%}
-            <a
-              href="{{ section.blocks.first.settings.link }}"
-              class="announcement-bar__link link link--text focus-inset animate-arrow"
-            >
-          {%- endif -%}
-          <p class="announcement-bar__message h5">
-            <span>{{ section.blocks.first.settings.text | escape }}</span>
-            {%- if section.blocks.first.settings.link != blank -%}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
+        {%- if section.blocks.first.settings.text != blank or section.blocks.first.settings.link_text != blank -%}
+        <p class="announcement-bar__message h5">
+            {%- if section.blocks.first.settings.text != blank -%}
+            <span><strong>{{ section.blocks.first.settings.text | escape }}</strong></span>
             {%- endif -%}
-          </p>
-          {%- if section.blocks.first.settings.link != blank -%}
-            </a>
-          {%- endif -%}
+            {%- if section.blocks.first.settings.link_text != blank -%}
+            &nbsp;
+            {%- if section.blocks.first.settings.link != blank -%}
+                <a
+                href="{{ section.blocks.first.settings.link }}"
+                class="announcement-bar__link link link--text focus-inset animate-arrow"
+                >
+            {%- endif -%}
+                <span>{{ section.blocks.first.settings.link_text | escape }}</span>
+                {%- if section.blocks.first.settings.link != blank -%}
+                {{- 'icon-arrow.svg' | inline_asset_content -}}
+                {%- endif -%}
+            {%- if section.blocks.first.settings.link != blank -%}
+                </a>
+            {%- endif -%}
+            {%- endif -%}
+        </p>
         {%- endif -%}
       </div>
     {%- elsif section.blocks.size > 1 -%}
@@ -137,27 +143,27 @@
       {%- endif -%}
     {%- endif -%}
     <div class="localization-wrapper">
-      {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-        <localization-form class="small-hide medium-hide">
-          {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
-            <div>
-              <h2 class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</h2>
-              {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
-            </div>
-          {%- endform -%}
-        </localization-form>
-      {% endif %}
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+            <localization-form class="small-hide medium-hide">
+            {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
+                <div>
+                <h2 class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+                </div>
+            {%- endform -%}
+            </localization-form>
+        {%- endif -%}
 
-      {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-        <localization-form class="small-hide medium-hide">
-          {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
-            <div>
-              <h2 class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</h2>
-              {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
-            </div>
-          {%- endform -%}
-        </localization-form>
-      {%- endif -%}
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+            <localization-form class="small-hide medium-hide">
+            {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
+                <div>
+                <h2 class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+                </div>
+            {%- endform -%}
+            </localization-form>
+        {% endif %}
     </div>
   </div>
 </div>
@@ -186,13 +192,13 @@
       "unit": "s",
       "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
       "default": 5
-    },    
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-4"
-    },  
+    },
     {
       "type": "checkbox",
       "id": "show_line_separator",
@@ -206,7 +212,7 @@
     {
       "type": "paragraph",
          "content": "t:sections.announcement-bar.settings.paragraph.content"
-    },             
+    },
     {
       "type": "checkbox",
       "id": "show_social",
@@ -239,6 +245,11 @@
           "id": "text",
           "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+            "type": "text",
+            "id": "link_text",
+            "label": "t:sections.announcement-bar.blocks.announcement.settings.link_text.label"
         },
         {
           "type": "url",

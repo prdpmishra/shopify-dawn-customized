@@ -30,23 +30,27 @@
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
+                {%- liquid
+                  assign active_menu_title = link.title | strip | downcase
+                  assign mega_menu_block = nil
+                  for block in section.blocks
+                    if block.type == 'mega_menu_promos'
+                      assign configured_menu_title = block.settings.menu_item_title | strip | downcase
+                      if configured_menu_title == active_menu_title
+                        assign mega_menu_block = block
+                        break
+                      endif
+                    endif
+                  endfor
+                -%}
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}{% if mega_menu_block != nil %} mega-menu__list--promotional{% endif %}"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
-                    <li>
-                      <a
-                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
-                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                        {% if childlink.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{ childlink.title | escape }}
-                      </a>
+                    <li class="mega-menu__column">
                       {%- if childlink.links != blank -%}
+                        <h2 class="mega-menu__column-heading">{{ childlink.title | escape }}</h2>
                         <ul class="list-unstyled" role="list">
                           {%- for grandchildlink in childlink.links -%}
                             <li>
@@ -63,9 +67,95 @@
                             </li>
                           {%- endfor -%}
                         </ul>
+                      {%- else -%}
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
                       {%- endif -%}
                     </li>
                   {%- endfor -%}
+                  {%- if mega_menu_block != nil -%}
+                    {%- if mega_menu_block.settings.image_1 != blank or mega_menu_block.settings.image_2 != blank -%}
+                      <li
+                        class="mega-menu__promo-group{% if mega_menu_block.settings.image_1 == blank or mega_menu_block.settings.image_2 == blank %} mega-menu__promo-group--single{% endif %}"
+                        {{ mega_menu_block.shopify_attributes }}
+                      >
+                        {%- if mega_menu_block.settings.image_1 != blank -%}
+                          {%- assign promo_alt_1 = mega_menu_block.settings.image_1.alt -%}
+                          {%- if mega_menu_block.settings.title_1 != blank -%}
+                            {%- assign promo_alt_1 = '' -%}
+                          {%- endif -%}
+                          <div class="mega-menu__promo">
+                            {%- if mega_menu_block.settings.url_1 != blank -%}
+                              <a class="mega-menu__promo-link" href="{{ mega_menu_block.settings.url_1 | escape }}">
+                            {%- else -%}
+                              <div class="mega-menu__promo-link">
+                            {%- endif -%}
+                              {{
+                                mega_menu_block.settings.image_1
+                                | image_url: width: 900
+                                | image_tag:
+                                  class: 'mega-menu__promo-image',
+                                  loading: 'lazy',
+                                  sizes: '(min-width: 1200px) 270px, 25vw',
+                                  alt: promo_alt_1
+                              }}
+                              {%- if mega_menu_block.settings.title_1 != blank -%}
+                                <span class="mega-menu__promo-title">{{ mega_menu_block.settings.title_1 | escape }}</span>
+                              {%- endif -%}
+                              {%- if mega_menu_block.settings.url_1 != blank -%}
+                                <span class="mega-menu__promo-arrow" aria-hidden="true">→</span>
+                              {%- endif -%}
+                            {%- if mega_menu_block.settings.url_1 != blank -%}
+                              </a>
+                            {%- else -%}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
+                        {%- if mega_menu_block.settings.image_2 != blank -%}
+                          {%- assign promo_alt_2 = mega_menu_block.settings.image_2.alt -%}
+                          {%- if mega_menu_block.settings.title_2 != blank -%}
+                            {%- assign promo_alt_2 = '' -%}
+                          {%- endif -%}
+                          <div class="mega-menu__promo">
+                            {%- if mega_menu_block.settings.url_2 != blank -%}
+                              <a class="mega-menu__promo-link" href="{{ mega_menu_block.settings.url_2 | escape }}">
+                            {%- else -%}
+                              <div class="mega-menu__promo-link">
+                            {%- endif -%}
+                              {{
+                                mega_menu_block.settings.image_2
+                                | image_url: width: 900
+                                | image_tag:
+                                  class: 'mega-menu__promo-image',
+                                  loading: 'lazy',
+                                  sizes: '(min-width: 1200px) 270px, 25vw',
+                                  alt: promo_alt_2
+                              }}
+                              {%- if mega_menu_block.settings.title_2 != blank -%}
+                                <span class="mega-menu__promo-title">{{ mega_menu_block.settings.title_2 | escape }}</span>
+                              {%- endif -%}
+                              {%- if mega_menu_block.settings.url_2 != blank -%}
+                                <span class="mega-menu__promo-arrow" aria-hidden="true">→</span>
+                              {%- endif -%}
+                            {%- if mega_menu_block.settings.url_2 != blank -%}
+                              </a>
+                            {%- else -%}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endif -%}
                 </ul>
               </div>
             </details>

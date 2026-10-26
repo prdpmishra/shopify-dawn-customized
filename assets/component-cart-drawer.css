@@ -78,6 +78,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 
 .drawer__heading {
   margin: 0 0 1rem;
+  font-weight: 600;
 }
 
 .drawer__close {

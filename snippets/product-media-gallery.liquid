@@ -53,6 +53,20 @@
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
+    {%- assign discount_variant = product.selected_or_first_available_variant -%}
+    {%- assign discount_compare_price = discount_variant.compare_at_price | default: 0 -%}
+    {%- if discount_compare_price > discount_variant.price -%}
+      {%- assign discount_amount = discount_compare_price | minus: discount_variant.price | times: 100.0 | divided_by: discount_compare_price | round -%}
+    {%- endif -%}
+    <span
+      class="product-discount-badge"
+      data-section-id="{{ section.id }}"
+      data-label-template="{{ 'products.product.discount_percentage' | t: percentage: '__PERCENTAGE__' | escape }}"
+      aria-label="{{ 'products.product.discount_percentage' | t: percentage: discount_amount }}"
+      {% unless discount_amount > 0 %}hidden{% endunless %}
+    >
+      {{ 'products.product.discount_percentage' | t: percentage: discount_amount }}
+    </span>
     <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
       {{ 'accessibility.skip_to_product_info' | t }}
     </a>

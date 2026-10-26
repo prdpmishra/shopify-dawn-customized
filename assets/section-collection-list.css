@@ -4,7 +4,7 @@
 }
 
 .collection-list-title {
-  margin: 0;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 749px) {
@@ -58,4 +58,12 @@
 
 .collection-list-view-all {
   margin-top: 2rem;
+}
+
+.collection-list .card__heading {
+  text-align: center;
+}
+
+.collection-list .card__heading > a {
+  text-decoration: underline;
 }

@@ -1,0 +1,73 @@
+{%- assign has_selected_collection = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.settings.collection != blank -%}
+    {%- assign has_selected_collection = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if has_selected_collection -%}
+  <div class="secondary-header-wrapper color-{{ section.settings.color_scheme }} gradient">
+    <div class="secondary-header-container page-width">
+      <nav class="secondary-header-nav" aria-label="{{ 'sections.secondary_header.navigation_label' | t }}">
+        <ul class="secondary-header-list list-unstyled" role="list">
+          {%- for block in section.blocks -%}
+            {%- assign nav_collection = block.settings.collection -%}
+            {%- if nav_collection != blank -%}
+              <li class="secondary-header-item" {{ block.shopify_attributes }}>
+                <a
+                  class="secondary-header-link link link--text"
+                  href="{{ nav_collection.url }}"
+                  {% if collection != blank and collection.id == nav_collection.id %}aria-current="page"{% endif %}
+                  {% if block.settings.link_color != blank %}style="--secondary-header-link-color: {{ block.settings.link_color }};"{% endif %}
+                >
+                  {{ nav_collection.title | escape }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.secondary_header.name",
+  "tag": "section",
+  "class": "secondary-header-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.secondary_header.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_link",
+      "name": "t:sections.secondary_header.blocks.collection_link.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.secondary_header.blocks.collection_link.settings.collection.label"
+        },
+        {
+          "type": "color",
+          "id": "link_color",
+          "label": "t:sections.secondary_header.blocks.collection_link.settings.link_color.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.secondary_header.presets.name"
+    }
+  ]
+}
+{% endschema %}

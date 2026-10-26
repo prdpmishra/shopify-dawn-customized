@@ -72,3 +72,196 @@ input::-webkit-search-decoration {
 .template-search__results {
   position: relative;
 }
+
+/* Header search panel */
+.search-modal.modal__content {
+  display: block;
+  top: 100%;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+body:has(.secondary-header-section) .section-header:not(.scrolled-past-header) .search-modal.modal__content {
+  top: calc(100% + 5.45rem);
+}
+
+body:has(.secondary-header-section) .section-header:not(.scrolled-past-header) .search-modal__panel {
+  max-height: calc(100vh - var(--header-height, 8rem) - 7.9rem);
+  max-height: calc(100dvh - var(--header-height, 8rem) - 7.9rem);
+}
+
+.search-modal__content {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.search-modal__panel {
+  max-height: calc(100vh - var(--header-height, 8rem) - 3rem);
+  max-height: calc(100dvh - var(--header-height, 8rem) - 3rem);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  background: rgb(var(--color-background));
+}
+
+.search-modal:has(.search__input:not(:placeholder-shown)) .search-modal__panel {
+  overflow: visible;
+}
+
+.search-modal__search-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: min(74rem, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 2.4rem 0;
+}
+
+.search-modal__search-row > predictive-search,
+.search-modal__search-row > search-form {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.search-modal__form,
+.search-modal__form .search-modal__form {
+  width: 100%;
+  max-width: none;
+}
+
+.search-modal .field {
+  border-radius: 0.4rem;
+  background-color: rgba(var(--color-foreground), 0.045);
+}
+
+.search-modal .search__input.field__input {
+  height: 4.8rem;
+  padding-left: 1.6rem;
+  padding-right: 4.8rem;
+  border: 0;
+  box-shadow: none;
+}
+
+.search-modal .search__button {
+  display: none;
+}
+
+.search-modal__close-button {
+  position: static;
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0.8rem;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.search-popular-categories {
+  padding: 3rem 0 4rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.search-popular-categories .page-width {
+  max-width: 112rem;
+}
+
+.search-popular-categories__heading {
+  margin: 0 0 1.6rem;
+  color: rgba(var(--color-foreground), 0.75);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.search-popular-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 0;
+}
+
+.search-popular-categories__item {
+  min-width: 0;
+}
+
+.search-popular-categories__link {
+  display: block;
+  color: rgba(var(--color-foreground), 0.8);
+  text-decoration: none;
+}
+
+.search-popular-categories__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  margin-bottom: 0.8rem;
+}
+
+.search-popular-categories__title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.search-popular-categories__link:hover .search-popular-categories__title {
+  text-decoration-thickness: 0.2rem;
+}
+
+.search-modal:has(.search__input:not(:placeholder-shown)) .search-popular-categories {
+  display: none;
+}
+
+@media screen and (max-width: 989px) {
+  .search-popular-categories__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.8rem 1.4rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  body:has(.secondary-header-section) .section-header:not(.scrolled-past-header) .search-modal.modal__content {
+    top: calc(100% + 4.8rem);
+  }
+
+  body:has(.secondary-header-section) .section-header:not(.scrolled-past-header) .search-modal__panel {
+    max-height: calc(100vh - var(--header-height, 8rem) - 7.8rem);
+    max-height: calc(100dvh - var(--header-height, 8rem) - 7.8rem);
+  }
+
+  .search-modal__search-row {
+    gap: 0.8rem;
+    padding: 1.6rem 0;
+  }
+
+  .search-modal__close-button {
+    padding: 0.8rem 0;
+  }
+
+  .search-popular-categories {
+    padding: 2.4rem 0 3rem;
+  }
+
+  .search-popular-categories__heading {
+    margin-bottom: 1.2rem;
+  }
+
+  .search-popular-categories__title {
+    font-size: 1.3rem;
+  }
+}

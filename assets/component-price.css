@@ -98,3 +98,26 @@
   margin-top: 0.2rem;
   color: rgba(var(--color-foreground), 0.7);
 }
+.product__media-wrapper slider-component {
+  position: relative;
+}
+
+.product-discount-badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: var(--badge-corner-radius);
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.product-discount-badge[hidden] {
+  display: none;
+}

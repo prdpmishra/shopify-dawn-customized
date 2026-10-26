@@ -34,9 +34,9 @@
     aria-describedby="{{ localPosition }}Label"
   >
     <span>
-      {{- localization.country.name }} |
+      {% comment %} {{- localization.country.name }} | {% endcomment %}
       {{ localization.country.currency.iso_code }}
-      {{ localization.country.currency.symbol -}}
+      {% comment %} {{ localization.country.currency.symbol -}} {% endcomment %}
     </span>
     {{ 'icon-caret.svg' | inline_asset_content }}
   </button>

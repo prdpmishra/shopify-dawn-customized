@@ -19,9 +19,6 @@
         <span class="svg-wrapper">
           {{- 'icon-search.svg' | inline_asset_content -}}
         </span>
-        <span class="svg-wrapper header__icon-close">
-          {{- 'icon-close.svg' | inline_asset_content -}}
-        </span>
       </span>
     </summary>
     <div
@@ -31,77 +28,138 @@
       aria-label="{{ 'general.search.search' | t }}"
     >
       <div class="modal-overlay"></div>
-      <div
-        class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
-        tabindex="-1"
-      >
-        {%- if settings.predictive_search_enabled -%}
-          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
-        {%- else -%}
-          <search-form class="search-modal__form">
-        {%- endif -%}
-        <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
-          <div class="field">
-            <input
-              class="search__input field__input"
-              id="{{ input_id }}"
-              type="search"
-              name="q"
-              value="{{ search.terms | escape }}"
-              placeholder="{{ 'general.search.search' | t }}"
+      <div class="search-modal__content" tabindex="-1">
+        <div class="modal-overlay"></div>
+        <div class="search-modal__panel">
+          <div class="search-modal__search-row">
+            {%- if settings.predictive_search_enabled -%}
+              <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+            {%- else -%}
+              <search-form class="search-modal__form">
+            {%- endif -%}
+            <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+              <div class="field">
+                <input
+                  class="search__input field__input"
+                  id="{{ input_id }}"
+                  type="search"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+                  placeholder="{{ 'general.search.search' | t }}"
+                  {%- if settings.predictive_search_enabled -%}
+                    role="combobox"
+                    aria-expanded="false"
+                    aria-owns="predictive-search-results"
+                    aria-controls="predictive-search-results"
+                    aria-haspopup="listbox"
+                    aria-autocomplete="list"
+                    autocorrect="off"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                  {%- endif -%}
+                >
+                <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+                <input type="hidden" name="options[prefix]" value="last">
+                <button
+                  type="reset"
+                  class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                  aria-label="{{ 'general.search.reset' | t }}"
+                >
+                  <span class="svg-wrapper">
+                    {{- 'icon-reset.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+                <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                  <span class="svg-wrapper">
+                    {{- 'icon-search.svg' | inline_asset_content -}}
+                  </span>
+                </button>
+              </div>
+
               {%- if settings.predictive_search_enabled -%}
-                role="combobox"
-                aria-expanded="false"
-                aria-owns="predictive-search-results"
-                aria-controls="predictive-search-results"
-                aria-haspopup="listbox"
-                aria-autocomplete="list"
-                autocorrect="off"
-                autocomplete="off"
-                autocapitalize="off"
-                spellcheck="false"
+                <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                  {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+                </div>
+
+                <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
               {%- endif -%}
-            >
-            <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
-            <input type="hidden" name="options[prefix]" value="last">
+            </form>
+            {%- if settings.predictive_search_enabled -%}
+              </predictive-search>
+            {%- else -%}
+              </search-form>
+            {%- endif -%}
             <button
-              type="reset"
-              class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
-              aria-label="{{ 'general.search.reset' | t }}"
+              type="button"
+              class="search-modal__close-button modal__close-button link link--text focus-inset"
+              aria-label="{{ 'accessibility.close' | t }}"
             >
-              <span class="svg-wrapper">
-                {{- 'icon-reset.svg' | inline_asset_content -}}
-              </span>
-            </button>
-            <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
-              <span class="svg-wrapper">
-                {{- 'icon-search.svg' | inline_asset_content -}}
-              </span>
+              {{- 'general.search.cancel' | t -}}
             </button>
           </div>
 
-          {%- if settings.predictive_search_enabled -%}
-            <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
-              {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
-            </div>
-
-            <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+          {%- liquid
+            assign has_search_popular_categories = false
+            for category_index in (1..4)
+              assign category_collection_setting_id = 'search_popular_category_collection_' | append: category_index
+              assign category_collection = section.settings[category_collection_setting_id]
+              if category_collection != blank
+                assign has_search_popular_categories = true
+                break
+              endif
+            endfor
+          -%}
+          {%- if has_search_popular_categories -%}
+            <section
+              class="search-popular-categories"
+              {% if section.settings.search_popular_categories_heading != blank %}
+                aria-labelledby="SearchPopularCategories-{{ input_id }}"
+              {% else %}
+                aria-label="{{ 'general.search.popular_categories' | t }}"
+              {% endif %}
+            >
+                <div class="page-width">
+                {%- if section.settings.search_popular_categories_heading != blank -%}
+                    <h2 class="search-popular-categories__heading" id="SearchPopularCategories-{{ input_id }}">
+                    {{- section.settings.search_popular_categories_heading | escape -}}
+                    </h2>
+                {%- endif -%}
+                <ul class="search-popular-categories__grid list-unstyled" role="list">
+                    {%- for category_index in (1..4) -%}
+                    {%- liquid
+                        assign category_collection_setting_id = 'search_popular_category_collection_' | append: category_index
+                        assign category_title_setting_id = 'search_popular_category_title_' | append: category_index
+                        assign category_image_setting_id = 'search_popular_category_image_' | append: category_index
+                        assign category_collection = section.settings[category_collection_setting_id]
+                        assign category_title = section.settings[category_title_setting_id] | default: category_collection.title
+                        assign category_image = section.settings[category_image_setting_id] | default: category_collection.featured_image
+                    -%}
+                    {%- if category_collection != blank -%}
+                        <li class="search-popular-categories__item">
+                        <a class="search-popular-categories__link" href="{{ category_collection.url | escape }}">
+                            {%- if category_image != blank -%}
+                            {{
+                                category_image
+                                | image_url: width: 700, height: 840, crop: 'center'
+                                | image_tag:
+                                class: 'search-popular-categories__image',
+                                widths: '165, 250, 350, 500, 700',
+                                sizes: '(min-width: 1200px) 250px, (min-width: 990px) 22vw, (min-width: 750px) 44vw, 46vw',
+                                loading: 'lazy',
+                                alt: ''
+                            }}
+                            {%- endif -%}
+                            <span class="search-popular-categories__title">{{- category_title | escape -}}</span>
+                        </a>
+                        </li>
+                    {%- endif -%}
+                    {%- endfor -%}
+                </ul>
+                </div>
+            </section>
           {%- endif -%}
-        </form>
-        {%- if settings.predictive_search_enabled -%}
-          </predictive-search>
-        {%- else -%}
-          </search-form>
-        {%- endif -%}
-        <button
-          type="button"
-          class="search-modal__close-button modal__close-button link link--text focus-inset"
-          aria-label="{{ 'accessibility.close' | t }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-close.svg' | inline_asset_content -}}
-          </span>
-        </button>
+        </div>
       </div>
     </div>
   </details>

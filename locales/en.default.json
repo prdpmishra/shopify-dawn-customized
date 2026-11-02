@@ -193,6 +193,15 @@
       "duties_and_taxes_included": "Duties and taxes included.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
     },
+    "upsell_products": {
+      "this_item": "This item:",
+      "variant_label": "Options for {{ title }}",
+      "quantity": "Quantity: {{ quantity }}",
+      "total": "Total:",
+      "add_one": "Add to cart",
+      "add_two": "Add both to cart",
+      "add_all": "Add all {{ count }} to cart"
+    },
     "modal": {
       "label": "Media gallery"
     },

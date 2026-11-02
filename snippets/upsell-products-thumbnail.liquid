@@ -1,0 +1,42 @@
+{% comment %}
+  Renders one thumbnail in the upsell-products strip.
+  Accepts:
+    - product: {Object} Product object
+    - image: {Object} Image to show. Falls back to the product's featured image (optional)
+    - is_current: {Boolean} Whether this is the product being viewed. Default: false (optional)
+    - hidden: {Boolean} Hide the thumbnail. Default: false (optional)
+
+  Usage:
+  {% render 'upsell-products-thumbnail', product: product, image: product.featured_image %}
+{% endcomment %}
+
+{%- assign thumbnail_image = image | default: product.featured_image -%}
+
+<li
+  class="upsell-products__thumbnail"
+  data-upsell-thumbnail="{{ product.id }}"
+  {% if is_current %}
+    data-current-thumbnail
+    {% if product.featured_image %}
+      data-fallback-src="{{ product.featured_image | image_url }}"
+    {% endif %}
+  {% endif %}
+  {% if hidden %}
+    hidden
+  {% endif %}
+>
+  {%- if thumbnail_image -%}
+    {{
+      thumbnail_image
+      | image_url: width: 160
+      | image_tag:
+        loading: 'lazy',
+        widths: '80, 160',
+        sizes: '80px',
+        alt: '',
+        class: 'upsell-products__image'
+    }}
+  {%- else -%}
+    {{ 'product-apparel-1' | placeholder_svg_tag: 'upsell-products__image placeholder-svg' }}
+  {%- endif -%}
+</li>

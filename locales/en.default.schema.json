@@ -2429,6 +2429,21 @@
               "default": "Heading"
             }
           }
+        },
+        "upsell_products": {
+          "name": "Frequently bought together",
+          "settings": {
+            "paragraph": {
+              "content": "Products come from the product's custom.upsell_products metafield. Sold-out products are hidden."
+            },
+            "heading": {
+              "label": "Heading",
+              "default": "Frequently bought together"
+            },
+            "products_to_show": {
+              "label": "Product count"
+            }
+          }
         }
       },
       "settings": {

@@ -1,0 +1,142 @@
+{% comment %}
+  Renders the "Frequently bought together" block: the current product plus the
+  upsell products from the product.metafields.custom.upsell_products metafield.
+  Accepts:
+    - block: {Object} The upsell_products block from main-product
+    - product: {Object} The current product
+    - section_id: {String} The ID of the main product section
+
+  Usage:
+  {% render 'upsell-products', block: block, product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign current_unavailable = true
+  assign upsell_count = 0
+  assign upsell_total = 0
+  assign upsell_thumbnails = ''
+  assign upsell_items = ''
+
+  if current_variant.available
+    assign current_unavailable = false
+    assign upsell_total = current_variant.price
+  endif
+
+  for upsell_product in product.metafields.custom.upsell_products.value
+    assign upsell_variant = nil
+
+    if upsell_product.available and upsell_product.id != product.id
+      unless upsell_product.requires_selling_plan
+        for variant in upsell_product.variants
+          if variant.available and variant.quantity_rule.min <= 1
+            assign upsell_variant = variant
+            break
+          endif
+        endfor
+      endunless
+    endif
+
+    if upsell_variant
+      assign upsell_count = upsell_count | plus: 1
+      assign upsell_total = upsell_total | plus: upsell_variant.price
+      assign upsell_id_suffix = section_id | append: '-' | append: block.id | append: '-' | append: upsell_product.id
+      assign upsell_checkbox_id = 'UpsellProduct-' | append: upsell_id_suffix
+      assign upsell_select_id = 'UpsellVariant-' | append: upsell_id_suffix
+
+      capture upsell_thumbnail
+        echo '<li class="upsell-products__separator">+</li>'
+        render 'upsell-products-thumbnail', product: upsell_product, image: upsell_variant.featured_image
+      endcapture
+      assign upsell_thumbnails = upsell_thumbnails | append: upsell_thumbnail
+
+      capture upsell_item
+        render 'upsell-products-item', product: upsell_product, variant: upsell_variant, checkbox_id: upsell_checkbox_id, select_id: upsell_select_id
+      endcapture
+      assign upsell_items = upsell_items | append: upsell_item
+
+      if upsell_count >= block.settings.products_to_show
+        break
+      endif
+    endif
+  endfor
+-%}
+
+{%- if upsell_count > 0 -%}
+  {{ 'component-upsell-products.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'upsell-products.js' | asset_url }}" defer="defer"></script>
+
+  <upsell-products
+    class="upsell-products quick-add-hidden"
+    data-section-id="{{ section_id }}"
+    data-product-id="{{ product.id }}"
+    data-money-sample="{{ 100000 | money | strip_html | escape }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- if block.settings.heading != blank -%}
+      <h2 class="upsell-products__heading h4">{{ block.settings.heading }}</h2>
+    {%- endif -%}
+
+    <ul class="upsell-products__thumbnails list-unstyled" role="list" aria-hidden="true">
+      {%- render 'upsell-products-thumbnail',
+        product: product,
+        image: current_variant.featured_image,
+        is_current: true,
+        hidden: current_unavailable
+      -%}
+      {{ upsell_thumbnails }}
+    </ul>
+
+    <ul class="upsell-products__items list-unstyled" role="list">
+      {%- render 'upsell-products-item',
+        product: product,
+        variant: current_variant,
+        is_current: true,
+        hidden: current_unavailable
+      -%}
+      {{ upsell_items }}
+    </ul>
+
+    <div class="upsell-products__footer">
+      <p class="upsell-products__total">
+        {{ 'products.upsell_products.total' | t }}
+        <span class="upsell-products__total-amount" data-upsell-total aria-live="polite">
+          {{- upsell_total | money -}}
+        </span>
+      </p>
+
+      <div class="upsell-products__error-message-wrapper product-form__error-message-wrapper" role="alert" hidden>
+        <span class="svg-wrapper">
+          {{- 'icon-error.svg' | inline_asset_content -}}
+        </span>
+        <span class="upsell-products__error-message product-form__error-message"></span>
+      </div>
+
+      {%- liquid
+        assign selected_count = upsell_count
+        unless current_unavailable
+          assign selected_count = selected_count | plus: 1
+        endunless
+
+        case selected_count
+          when 1
+            assign submit_label = 'products.upsell_products.add_one' | t
+          when 2
+            assign submit_label = 'products.upsell_products.add_two' | t
+          else
+            assign submit_label = 'products.upsell_products.add_all' | t: count: selected_count
+        endcase
+      -%}
+      <button
+        type="button"
+        class="upsell-products__submit button button--full-width button--secondary"
+        data-label-one="{{ 'products.upsell_products.add_one' | t | escape }}"
+        data-label-two="{{ 'products.upsell_products.add_two' | t | escape }}"
+        data-label-all="{{ 'products.upsell_products.add_all' | t: count: '[count]' | escape }}"
+      >
+        <span data-submit-label>{{ submit_label }}</span>
+        {%- render 'loading-spinner' -%}
+      </button>
+    </div>
+  </upsell-products>
+{%- endif -%}

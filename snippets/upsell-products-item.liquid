@@ -1,0 +1,123 @@
+{% comment %}
+  Renders one row of the upsell-products list: checkbox, title, price and variant dropdown.
+  Accepts:
+    - product: {Object} Product object
+    - variant: {Object} The variant selected by default
+    - is_current: {Boolean} Whether this is the product being viewed. It has no checkbox or dropdown. Default: false (optional)
+    - hidden: {Boolean} Hide the row and leave it out of the total. Default: false (optional)
+    - checkbox_id: {String} ID for the checkbox (required unless is_current)
+    - select_id: {String} ID for the variant dropdown (required unless is_current)
+
+  Usage:
+  {% render 'upsell-products-item', product: product, variant: variant, checkbox_id: 'id', select_id: 'id' %}
+{% endcomment %}
+
+{%- liquid
+  assign on_sale = false
+  if variant.compare_at_price > variant.price
+    assign on_sale = true
+  endif
+-%}
+
+<li
+  class="upsell-products__item"
+  data-upsell-item
+  data-product-id="{{ product.id }}"
+  data-variant-id="{{ variant.id }}"
+  data-price="{{ variant.price }}"
+  data-compare-at-price="{{ variant.compare_at_price | default: 0 }}"
+  data-quantity="1"
+  {% if is_current %}
+    data-current-item
+  {% endif %}
+  {% if hidden %}
+    hidden
+  {% endif %}
+>
+  {%- if is_current -%}
+    <p class="upsell-products__title">
+      <span class="upsell-products__current-label">{{ 'products.upsell_products.this_item' | t }}</span>
+      {{ product.title | escape }}
+    </p>
+  {%- else -%}
+    <input
+      type="checkbox"
+      id="{{ checkbox_id }}"
+      class="upsell-products__checkbox"
+      data-upsell-checkbox
+      checked
+    >
+    <label for="{{ checkbox_id }}" class="upsell-products__title">{{ product.title | escape }}</label>
+  {%- endif -%}
+
+  <div class="upsell-products__price">
+    <s
+      class="upsell-products__compare-price"
+      data-compare-price
+      {% unless on_sale %}
+        hidden
+      {% endunless %}
+    >
+      <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+      <span data-compare-price-amount>{{ variant.compare_at_price | money }}</span>
+    </s>
+    <span class="upsell-products__current-price">
+      <span
+        class="visually-hidden"
+        data-sale-price-label
+        {% unless on_sale %}
+          hidden
+        {% endunless %}
+      >
+        {{- 'products.product.price.sale_price' | t -}}
+      </span>
+      <span data-price-amount>{{ variant.price | money }}</span>
+    </span>
+  </div>
+
+  {%- if is_current -%}
+    <div class="upsell-products__meta">
+      {%- unless product.has_only_default_variant -%}
+        <span data-variant-title>{{ variant.title | escape }}</span>
+      {%- endunless -%}
+      <span
+        data-quantity-label
+        data-quantity-template="{{ 'products.upsell_products.quantity' | t: quantity: '[quantity]' | escape }}"
+        hidden
+      ></span>
+    </div>
+  {%- elsif product.has_only_default_variant == false -%}
+    <div class="upsell-products__meta">
+      <div class="select upsell-products__select">
+        <label for="{{ select_id }}" class="visually-hidden">
+          {{- 'products.upsell_products.variant_label' | t: title: product.title -}}
+        </label>
+        <select id="{{ select_id }}" class="select__select" data-upsell-variant-select>
+          {%- for product_variant in product.variants -%}
+            {%- assign variant_image = product_variant.featured_image | default: product.featured_image -%}
+            <option
+              value="{{ product_variant.id }}"
+              data-price="{{ product_variant.price }}"
+              data-compare-at-price="{{ product_variant.compare_at_price | default: 0 }}"
+              {% if variant_image %}
+                data-image="{{ variant_image | image_url: width: 160 }}"
+              {% endif %}
+              {% if product_variant.id == variant.id %}
+                selected="selected"
+              {% endif %}
+              {% unless product_variant.available and product_variant.quantity_rule.min <= 1 %}
+                disabled
+              {% endunless %}
+            >
+              {{ product_variant.title | escape -}}
+              {%- unless product_variant.available %} - {{ 'products.product.sold_out' | t }}{% endunless %}
+            </option>
+          {%- endfor -%}
+        </select>
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </div>
+    </div>
+  {%- endif -%}
+</li>

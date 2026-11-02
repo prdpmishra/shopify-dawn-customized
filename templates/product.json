@@ -45,6 +45,13 @@
             "show_gift_card_recipient": true
           }
         },
+        "upsell_products_nCdDCV": {
+          "type": "upsell_products",
+          "settings": {
+            "heading": "Frequently bought together",
+            "products_to_show": 2
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -63,6 +70,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "upsell_products_nCdDCV",
         "description",
         "share"
       ],

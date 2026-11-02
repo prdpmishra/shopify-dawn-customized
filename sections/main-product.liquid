@@ -689,6 +689,8 @@
                   </product-recommendations>
                 {%- when 'icon-with-text' -%}
                   {% render 'icon-with-text', block: block %}
+                {%- when 'upsell_products' -%}
+                  {%- render 'upsell-products', block: block, product: product, section_id: section.id -%}
               {%- endcase -%}
             {%- endfor -%}
             <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -2143,6 +2145,32 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "upsell_products",
+      "name": "t:sections.main-product.blocks.upsell_products.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-product.blocks.upsell_products.settings.paragraph.content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "t:sections.main-product.blocks.upsell_products.settings.heading.default",
+          "label": "t:sections.main-product.blocks.upsell_products.settings.heading.label"
+        },
+        {
+          "type": "range",
+          "id": "products_to_show",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "default": 2,
+          "label": "t:sections.main-product.blocks.upsell_products.settings.products_to_show.label"
         }
       ]
     }
